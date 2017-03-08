@@ -1,0 +1,67 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+<script>
+angular.module('todoApp', [])
+    .controller('todoController', function($scope){
+        $scope.tasks = [];
+        $scope.complete = [];
+        $scope.taskComplete = false;
+        $scope.visible = false;
+
+        $scope.add = function() {
+            $scope.tasks.push({name:$scope.taskName, date:$scope.dueDate});
+            $scope.taskName = '';
+            $scope.dueDate = '';
+        }
+        $scope.delete = function(){
+          $scope.tasks.splice(this.$index, 1);
+        }
+          $scope.edit = function(){
+          //$scope.tasks.splice(this.$index, 1);
+          $scope.tasks.push({name:$scope.taskName, date:$scope.dueDate});
+        }
+
+        $scope.completed = function(){
+        //  $scope.dateComplete = new Date();
+          $scope.complete.push($scope.tasks[this.$index]);
+        //  $scope.complete.push({name:$scope.taskName, date:$scope.dateComplete});
+          $scope.tasks.splice(this.$index, 1);
+          $scope.taskComplete = true;
+        }
+    })
+</script>
+<style>
+.completed{
+  text-decoration: line-through;
+  color: #f4f4f4;
+}
+</style>
+
+
+<div ng-app="todoApp" ng-controller="todoController">
+  <form ng-submit="add()">
+    <input type="text" placeholder="Enter a task" ng-model="taskName" ng-required>
+    <input type="date" placeholder="Date due" ng-model="dueDate" ng-required>
+    <button type="submit">Add</button>
+  </form>
+
+    <ul>
+        <li ng-repeat="task in tasks">
+          <input type="checkbox" ng-click="completed()" ng-model="taskComplete" ng-required>
+          <p ng-hide="editing">{{task.name}} {{task.date | date}}</p>
+          <form ng-show="editing" ng-submit="editing =false">
+            <input type="text" ng-model="task.name">
+            <input type="date" ng-model="task.date">
+            <button type="submit">Update</button>
+          </form>
+            <button ng-click="editing = true" ng-hide="editing">Edit</button>
+
+            <button ng-click="delete()">Delete</button>
+      <!--    <button ng-click="edit()">Edit</button> -->
+        </li>
+    </ul>
+    <ul>
+        <li ng-repeat="c in complete" ng-if="taskComplete" class="completed">
+          {{c.name}} {{c.date | date}}
+        </li>
+    </ul>
+</div>
