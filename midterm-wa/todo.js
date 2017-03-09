@@ -23,6 +23,7 @@
 
         $scope.delete = function(){
           $scope.tasks.splice(this.$index, 1);
+					localStorage.setItem('todo', JSON.stringify($scope.tasks));
         }
 
         $scope.completed = function(){
