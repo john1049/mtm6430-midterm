@@ -16,18 +16,15 @@
 
         $scope.add = function() {
             $scope.tasks.push({name:$scope.taskName, date:$scope.dueDate});
-						update();
+						$scope.update();
             $scope.taskName = '';
             $scope.dueDate = '';
         }
 
         $scope.delete = function(){
           $scope.tasks.splice(this.$index, 1);
-					localStorage.setItem('todo', JSON.stringify($scope.tasks));
+					$scope.update();
         }
-
-
-
 
         $scope.completed = function(){
           $scope.complete.push($scope.tasks[this.$index]);
