@@ -33,7 +33,7 @@
 					</div>
 					</form>
 
-					<div ng-repeat="task in tasks" class="taskList">
+					<div ng-repeat="task in tasks track by $index" class="taskList">
 						<input type="checkbox" ng-click="completed()" ng-model="taskComplete" ng-required>
 						<div class="container">
 							<div class="row">
