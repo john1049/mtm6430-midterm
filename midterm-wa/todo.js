@@ -1,8 +1,6 @@
 (function(){
 	var app = angular.module('todoApp', [])
   	 app.controller('todoController', function($scope){
-      //  const tasks = JSON.parse(localStorage.getItem('todo')) : []
-			$scope.saved = localStorage.getItem('todo');
 			$scope.tasks = (localStorage.getItem('todo')!==null) ? JSON.parse(localStorage.getItem('todo')) : [];
 			localStorage.setItem('todo', JSON.stringify($scope.tasks));
 
@@ -12,11 +10,13 @@
         $scope.visible = false;
 
 
-
+				$scope.update = function(){
+					localStorage.setItem('todo', JSON.stringify($scope.tasks));
+				}
 
         $scope.add = function() {
             $scope.tasks.push({name:$scope.taskName, date:$scope.dueDate});
-						localStorage.setItem('todo', JSON.stringify($scope.tasks));
+						update();
             $scope.taskName = '';
             $scope.dueDate = '';
         }
@@ -26,9 +26,7 @@
 					localStorage.setItem('todo', JSON.stringify($scope.tasks));
         }
 
-				$scope.update = function(){
-					localStorage.setItem('todo', JSON.stringify($scope.tasks));
-				}
+
 
 
         $scope.completed = function(){
