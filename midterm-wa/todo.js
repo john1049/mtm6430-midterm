@@ -1,8 +1,8 @@
 (function(){
 	var app = angular.module('todoApp', [])
   	 app.controller('todoController', function($scope){
-			$scope.tasks = (localStorage.getItem('todo')!==null) ? JSON.parse(localStorage.getItem('todo')) : [];
-			localStorage.setItem('todo', JSON.stringify($scope.tasks));
+			$scope.tasks = (localStorage.getItem('todo')!= null) ? JSON.parse(localStorage.getItem('todo')) : [];
+
 
 				console.log($scope.tasks);
         $scope.complete = [];
