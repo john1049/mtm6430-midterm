@@ -26,6 +26,11 @@
 					localStorage.setItem('todo', JSON.stringify($scope.tasks));
         }
 
+				$scope.update = function(){
+					localStorage.setItem('todo', JSON.stringify($scope.tasks));
+				}
+
+
         $scope.completed = function(){
           $scope.complete.push($scope.tasks[this.$index]);
 

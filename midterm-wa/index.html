@@ -46,7 +46,7 @@
 						<form ng-show="editing" ng-submit="editing =false" class="editForm">
 							<input type="text" ng-model="task.name" class="taskEdit">
 							<input type="date" ng-model="task.date" class="dateEdit">
-							<button type="submit" class="updateBtn"><i class="glyphicon glyphicon-saved"></i></button>
+							<button type="submit" class="updateBtn" ng-click="update()"><i class="glyphicon glyphicon-saved"></i></button>
 						</form>
 						<button ng-click="delete()" class=" deleteBtn"><i class="glyphicon glyphicon-remove"></i></button>
 						<button ng-click="editing = true" ng-hide="editing" class="editBtn"><i class="glyphicon glyphicon-edit"></i></button>
