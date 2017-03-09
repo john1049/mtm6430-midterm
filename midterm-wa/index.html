@@ -9,40 +9,34 @@
 </head>
 
 <body ng-app='todoApp' ng-controller="todoController">
-
 	<div class="container">
 		<div class="panel-group col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
 					<h1 class="text-center">Todo List</h1>
 				</div>
+
 				<div class="panel-body">
 					<form ng-submit="add()">
 						<div class="row">
 							<div class="col-xs-12">
-						<input type="text" placeholder="Enter a task" ng-model="taskName" class="form-control" ng-required>
-					</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-8">
-						<input type="date" placeholder="Date due" ng-model="dueDate" class="form-control" ng-required>
-					</div>
-					<div class="col-xs-3">
-						<button type="submit" class="btn btn-primary">Add  <i class="glyphicon glyphicon-plus"></i></button>
-					</div>
-					</div>
+								<input type="text" placeholder="Enter a task" ng-model="taskName" class="form-control" ng-required>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-8">
+								<input type="date" placeholder="Date due" ng-model="dueDate" class="form-control" ng-required>
+							</div>
+							<div class="col-xs-3">
+								<button type="submit" class="btn btn-primary">Add  <i class="glyphicon glyphicon-plus"></i></button>
+							</div>
+						</div>
 					</form>
 
 					<div ng-repeat="task in tasks track by $index" class="taskList">
 						<input type="checkbox" ng-click="completed()" ng-model="taskComplete" ng-required>
-						<div class="container">
-							<div class="row">
 						<p ng-hide="editing">{{task.name}}</p>
-					</div>
-					<div class="row">
-						<p ng-hide="editing"> {{task.date | date}}</p>
-					</div>
-					</div>
+						<p ng-hide="editing"> Due Date: {{task.date | date}}</p>
 						<form ng-show="editing" ng-submit="editing =false" class="editForm">
 							<input type="text" ng-model="task.name" class="taskEdit">
 							<input type="date" ng-model="task.date" class="dateEdit">
@@ -51,12 +45,12 @@
 						<button ng-click="delete()" class=" deleteBtn"><i class="glyphicon glyphicon-remove"></i></button>
 						<button ng-click="editing = true" ng-hide="editing" class="editBtn"><i class="glyphicon glyphicon-edit"></i></button>
 					</div>
+
 					<div ng-repeat="c in complete track by $index" class="completed">
 						<p > {{c.name}} {{c.date | date}}</p>
 					</div>
 					<button ng-click="deleteComplete()" class="removeBtn text-center">Remove Completed Items</button>
 				</div>
-
 			</div>
 		</div>
 	</div>
