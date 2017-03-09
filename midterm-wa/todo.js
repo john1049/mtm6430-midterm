@@ -4,7 +4,6 @@
 			$scope.tasks = (localStorage.getItem('todo')!= null) ? JSON.parse(localStorage.getItem('todo')) : [];
 			$scope.complete = (localStorage.getItem('complete')!= null) ? JSON.parse(localStorage.getItem('complete')) : [];
 			console.log($scope.complete);
-			localStorage.setItem('complete', JSON.stringify($scope.tasks));
         $scope.taskComplete = false;
         $scope.visible = false;
 
@@ -27,10 +26,13 @@
 
         $scope.completed = function(){
           $scope.complete.push($scope.tasks[this.$index]);
-					console.log($scope.complete);
-					localStorage.setItem('complete', JSON.stringify($scope.tasks));
+					localStorage.setItem('complete', JSON.stringify($scope.complete));
           $scope.tasks.splice(this.$index, 1);
 					$scope.update();
+
+					console.log('complete' + $scope.complete);
+					console.log('todo' + $scope.tasks);
+
           $scope.taskComplete = true;
         }
 

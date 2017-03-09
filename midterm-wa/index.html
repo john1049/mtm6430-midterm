@@ -51,9 +51,9 @@
 						<button ng-click="delete()" class=" deleteBtn"><i class="glyphicon glyphicon-remove"></i></button>
 						<button ng-click="editing = true" ng-hide="editing" class="editBtn"><i class="glyphicon glyphicon-edit"></i></button>
 					</div>
-					<ul>
-						<p ng-repeat="c in complete" ng-if="taskComplete" class="completed"> {{c.name}} {{c.date | date}}</p>
-					</ul>
+					<div ng-repeat="c in complete track by $index" class="completed">
+						<p > {{c.name}} {{c.date | date}}</p>
+					</div>
 					<button ng-click="deleteComplete()" class="removeBtn text-center">Remove Completed Items</button>
 				</div>
 
