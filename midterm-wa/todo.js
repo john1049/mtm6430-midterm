@@ -2,10 +2,9 @@
 	var app = angular.module('todoApp', [])
   	 app.controller('todoController', function($scope){
 			$scope.tasks = (localStorage.getItem('todo')!= null) ? JSON.parse(localStorage.getItem('todo')) : [];
-
-
-				console.log($scope.tasks);
-        $scope.complete = [];
+			$scope.complete = (localStorage.getItem('complete')!= null) ? JSON.parse(localStorage.getItem('complete')) : [];
+			console.log($scope.complete);
+			localStorage.setItem('complete', JSON.stringify($scope.tasks));
         $scope.taskComplete = false;
         $scope.visible = false;
 
@@ -28,8 +27,10 @@
 
         $scope.completed = function(){
           $scope.complete.push($scope.tasks[this.$index]);
-
+					console.log($scope.complete);
+					localStorage.setItem('complete', JSON.stringify($scope.tasks));
           $scope.tasks.splice(this.$index, 1);
+					$scope.update();
           $scope.taskComplete = true;
         }
 
