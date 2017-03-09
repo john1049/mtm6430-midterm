@@ -18,15 +18,31 @@
 				</div>
 				<div class="panel-body">
 					<form ng-submit="add()">
+						<div class="row">
+							<div class="col-xs-12">
 						<input type="text" placeholder="Enter a task" ng-model="taskName" class="form-control" ng-required>
+					</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-8">
 						<input type="date" placeholder="Date due" ng-model="dueDate" class="form-control" ng-required>
+					</div>
+					<div class="col-xs-3">
 						<button type="submit" class="btn btn-primary">Add  <i class="glyphicon glyphicon-plus"></i></button>
+					</div>
+					</div>
 					</form>
-<!-- has anything changed -->
 
 					<div ng-repeat="task in tasks" class="taskList">
 						<input type="checkbox" ng-click="completed()" ng-model="taskComplete" ng-required>
-						<p ng-hide="editing">{{task.name}}</p> <p ng-hide="editing"> {{task.date | date}}</p>
+						<div class="container">
+							<div class="row">
+						<p ng-hide="editing">{{task.name}}</p>
+					</div>
+					<div class="row">
+						<p ng-hide="editing"> {{task.date | date}}</p>
+					</div>
+					</div>
 						<form ng-show="editing" ng-submit="editing =false" class="editForm">
 							<input type="text" ng-model="task.name" class="taskEdit">
 							<input type="date" ng-model="task.date" class="dateEdit">
