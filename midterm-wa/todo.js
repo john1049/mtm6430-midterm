@@ -24,12 +24,17 @@
         }
 
         $scope.delete = function() {
-            $scope.tasks.splice(this.$index, 1);
+            $scope.tasks.splice(this.id);
             $scope.update();
         }
 
         $scope.completed = function() {
             $scope.todo.complete = true;
+            $scope.update();
+        }
+
+				$scope.notCompleted = function() {
+            $scope.todo.complete = false;
             $scope.update();
         }
     })

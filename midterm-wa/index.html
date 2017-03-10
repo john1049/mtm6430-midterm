@@ -47,7 +47,9 @@
 					</div>
 
 					<div ng-repeat="task in tasks | filter: {complete:true} track by task.id" class="completed">
+						<input type="checkbox" ng-click="notCompleted()" ng-model="taskComplete" ng-required>
 						<p > {{task.name}} {{task.date | date}}</p>
+						<button ng-click="delete()" class=" deleteBtn"><i class="glyphicon glyphicon-remove"></i></button>
 					</div>
 				</div>
 			</div>
