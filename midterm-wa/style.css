@@ -2,11 +2,8 @@
 
 .completed{
   display: block;
-  text-decoration: line-through;
   color: #a8a8a8;
-  padding-top: 10px;
 }
-
 
 p{
   display: inline-block;
@@ -50,9 +47,15 @@ p{
   color: #414141;
 }
 
+.taskEdit, .dateEdit {
+  margin: 0 0 5px;
+}
+
 .updateBtn{
   border: none;
   background: none;
+  float: right;
+  margin-right: 12px;
 }
 
 .glyphicon-saved{
@@ -82,8 +85,19 @@ p{
   padding: 20px;
 }
 
-.list{
-  margin: 0 !important;
+.list-group{
+  margin: 5px;
+}
+
+.taskName{
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.dueDate{
+  display: block;
+  margin-left: 30px;
+  font-size: 12px;
 }
 
 /*

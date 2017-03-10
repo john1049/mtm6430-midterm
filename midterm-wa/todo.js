@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('todoApp', [])
+    var app = angular.module('todoApp', ['ngAnimate'])
     app.controller('todoController', function($scope) {
         $scope.tasks = (localStorage.getItem('todo') != null) ? JSON.parse(localStorage.getItem('todo')) : [];
         $scope.visible = false;
@@ -8,8 +8,10 @@
             localStorage.setItem('todo', JSON.stringify($scope.tasks));
         }
 				//The unfuck my tasks array
-				//$scope.tasks = [];
-				//$scope.update();
+        $scope.unfuck = function(){
+				    $scope.tasks = [];
+				    $scope.update();
+      }
 
         $scope.add = function() {
             $scope.todo = ({
@@ -25,7 +27,6 @@
         }
 
         $scope.delete = function() {
-					console.log(this.$index);
           $scope.tasks.splice(this.$index);
           $scope.update();
         }
@@ -37,7 +38,6 @@
 
 				$scope.uncomplete = function() {
             this.task.complete = false;
-						console.log(this.task.complete);
             $scope.update();
         }
     })
