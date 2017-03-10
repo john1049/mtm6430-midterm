@@ -2,19 +2,23 @@
     var app = angular.module('todoApp', [])
     app.controller('todoController', function($scope) {
         $scope.tasks = (localStorage.getItem('todo') != null) ? JSON.parse(localStorage.getItem('todo')) : [];
-        $scope.complete = (localStorage.getItem('complete') != null) ? JSON.parse(localStorage.getItem('complete')) : [];
         $scope.visible = false;
+
+				console.log($scope.tasks);
 
         $scope.update = function() {
             localStorage.setItem('todo', JSON.stringify($scope.tasks));
         }
+				//The unfuck my tasks array
+				//$scope.tasks = [];
+				//$scope.update();
 
         $scope.add = function() {
             $scope.todo = ({
                 name: $scope.taskName,
                 date: $scope.dueDate,
 								complete: false
-            });
+            })
 						$scope.todo.id = cuid();
 						console.log($scope.todo);
 						$scope.tasks.push($scope.todo);
@@ -29,12 +33,13 @@
         }
 
         $scope.completed = function() {
-            $scope.todo.complete = true;
+						this.task.complete = true;
             $scope.update();
         }
 
-				$scope.notCompleted = function() {
-            $scope.todo.complete = false;
+				$scope.uncomplete = function() {
+            this.task.complete = false;
+						console.log(this.task.complete);
             $scope.update();
         }
     })
