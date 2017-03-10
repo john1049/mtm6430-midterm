@@ -33,7 +33,7 @@
 						</div>
 					</form>
 
-					<div ng-repeat="task in tasks track by $index" class="taskList">
+					<div ng-repeat="task in tasks | filter: {complete:false} track by task.id" class="taskList">
 						<input type="checkbox" ng-click="completed()" ng-model="taskComplete" ng-required>
 						<p ng-hide="editing">{{task.name}}</p>
 						<p ng-hide="editing"> Due Date: {{task.date | date}}</p>
@@ -46,10 +46,9 @@
 						<button ng-click="editing = true" ng-hide="editing" class="editBtn"><i class="glyphicon glyphicon-edit"></i></button>
 					</div>
 
-					<div ng-repeat="c in complete track by $index" class="completed">
-						<p > {{c.name}} {{c.date | date}}</p>
+					<div ng-repeat="task in tasks | filter: {complete:true} track by task.id" class="completed">
+						<p > {{task.name}} {{task.date | date}}</p>
 					</div>
-					<button ng-click="deleteComplete()" class="removeBtn text-center">Remove Completed Items</button>
 				</div>
 			</div>
 		</div>

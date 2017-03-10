@@ -10,10 +10,14 @@
         }
 
         $scope.add = function() {
-            $scope.tasks.push({
+            $scope.todo = ({
                 name: $scope.taskName,
-                date: $scope.dueDate
+                date: $scope.dueDate,
+								complete: false
             });
+						$scope.todo.id = cuid();
+						console.log($scope.todo);
+						$scope.tasks.push($scope.todo);
             $scope.update();
             $scope.taskName = '';
             $scope.dueDate = '';
@@ -25,14 +29,8 @@
         }
 
         $scope.completed = function() {
-            $scope.complete.push($scope.tasks[this.$index]);
-            localStorage.setItem('complete', JSON.stringify($scope.complete));
-            $scope.tasks.splice(this.$index, 1);
+            $scope.todo.complete = true;
             $scope.update();
-        }
-
-        $scope.deleteComplete = function() {
-            $scope.complete = [];
         }
     })
 })();
