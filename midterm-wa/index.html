@@ -44,10 +44,12 @@
 					</div>
 				</div>
 
-					<div ng-repeat="task in tasks | filter: {complete:true} track by task.id" class="completed">
+					<div ng-repeat="task in tasks | filter: {complete:true} track by task.id" class="completed list-group">
+						<div class="list-group-item">
 						<input type="checkbox" ng-click="uncomplete()" ng-model="taskComplete" ng-required>
 						<p > {{task.name}} {{task.date | date}}</p>
 						<button ng-click="delete()" class=" deleteBtn"><i class="glyphicon glyphicon-remove"></i></button>
+					</div>
 					</div>
 
 		</div>

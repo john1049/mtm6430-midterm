@@ -4,8 +4,6 @@
         $scope.tasks = (localStorage.getItem('todo') != null) ? JSON.parse(localStorage.getItem('todo')) : [];
         $scope.visible = false;
 
-				console.log($scope.tasks);
-
         $scope.update = function() {
             localStorage.setItem('todo', JSON.stringify($scope.tasks));
         }
@@ -20,7 +18,6 @@
 								complete: false
             })
 						$scope.todo.id = cuid();
-						console.log($scope.todo);
 						$scope.tasks.push($scope.todo);
             $scope.update();
             $scope.taskName = '';
@@ -28,8 +25,9 @@
         }
 
         $scope.delete = function() {
-            $scope.tasks.splice(this.id);
-            $scope.update();
+					console.log(this.$index);
+          $scope.tasks.splice(this.$index);
+          $scope.update();
         }
 
         $scope.completed = function() {
