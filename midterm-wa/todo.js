@@ -7,36 +7,38 @@
         $scope.update = function() {
             localStorage.setItem('todo', JSON.stringify($scope.tasks));
         }
-				//The unfuck my tasks array
-        $scope.unfuck = function(){
-				    $scope.tasks = [];
-				    $scope.update();
-      }
+
+        Array.prototype.remove = function(value) {
+            this.splice(this.indexOf(value), 1);
+            return true;
+        };
 
         $scope.add = function() {
             $scope.todo = ({
                 name: $scope.taskName,
                 date: $scope.dueDate,
-								complete: false
+                complete: false
             })
-						$scope.todo.id = cuid();
-						$scope.tasks.push($scope.todo);
+            $scope.todo.id = cuid();
+            console.log(this.todo.id);
+            $scope.tasks.push($scope.todo);
             $scope.update();
             $scope.taskName = '';
             $scope.dueDate = '';
         }
 
-        $scope.delete = function() {
-          $scope.tasks.splice(this.$index);
-          $scope.update();
-        }
-
-        $scope.completed = function() {
-						this.task.complete = true;
+        $scope.delete = function(task) {
+            console.log(task);
+            $scope.tasks.remove(task);
             $scope.update();
         }
 
-				$scope.uncomplete = function() {
+        $scope.completed = function() {
+            this.task.complete = true;
+            $scope.update();
+        }
+
+        $scope.uncomplete = function() {
             this.task.complete = false;
             $scope.update();
         }
