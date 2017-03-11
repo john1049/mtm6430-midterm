@@ -20,7 +20,6 @@
                 complete: false
             })
             $scope.todo.id = cuid();
-            console.log(this.todo.id);
             $scope.tasks.push($scope.todo);
             $scope.update();
             $scope.taskName = '';
@@ -28,7 +27,6 @@
         }
 
         $scope.delete = function(task) {
-            console.log(task);
             $scope.tasks.remove(task);
             $scope.update();
         }

@@ -1,4 +1,6 @@
-
+h1{
+  padding:20px 0 30px;
+}
 
 .completed{
   display: block;
@@ -98,14 +100,14 @@ p{
 }
 
 .taskName{
-  margin-left: 10px;
+  margin-left: 5px;
   font-size: 20px;
   font-weight: bold;
 }
 
 .dueDate{
   display: block;
-  margin-left: 30px;
+  margin-left: 35px;
   font-size: 14px;
 }
 
@@ -113,6 +115,12 @@ p{
   transition: all 0.5s ease;
   opacity: 1.0;
   left: 0;
+}
+
+.checkboxes{
+  margin-top: 4px;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .slide {
